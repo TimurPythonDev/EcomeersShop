@@ -25,7 +25,7 @@
     {% endfor %}
         <tr>
           <td colspan="2"></td>
-          <td>Итого:</td>
+          <td>Jami:</td>
           <td>{{ cart.total_products }}</td>
           <td><strong>${{ cart.final_price }}</strong></td>
         </tr>
@@ -36,6 +36,6 @@
 <form action="{% url 'make_order' %}" method="POST">
   {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" class="btn btn-success btn-block mb-3" values="Оформить заказ">
+  <input type="submit" class="btn btn-success btn-block mb-3" values="Buyurtmani o'zlashtirish">
 </form>
 {% endblock content %}

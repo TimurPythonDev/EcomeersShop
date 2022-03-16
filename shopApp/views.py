@@ -15,13 +15,17 @@ class BaseView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
         categories = Category.objects.get_categories_for_left_sidebar()
+        # rek_slide = RekModels.objects.all()
+        # queryset = RekModels.objects.filter()
         products = LatestProducts.objects.get_products_for_main_page(
             'notebook', 'smartphone', with_respect_to='notebook'
         )
         context = {
             'categories': categories,
             'products': products,
-            'cart': self.cart
+            'cart': self.cart,
+            # 'file': queryset,
+            # 'rek_slide':rek_slide,
         }
         return render(request, 'base.html', context)
 
@@ -91,7 +95,7 @@ class DeleteFromCartView(CartMixin, View):
         self.cart.products.remove(cart_product)
         cart_product.delete()
         recalc_cart(self.cart)
-        messages.add_message(request, messages.INFO, "Element muvaffaqiyatli oʻchirildi")
+        messages.add_message(request, messages.INFO, "Element muvaffaqiyatli o\'chirildi")
         return HttpResponseRedirect('/cart/')
 
 

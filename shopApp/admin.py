@@ -43,6 +43,22 @@ class SmartphoneAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field,request,**kwargs)
 
 
+class PostImageAdmin(admin.StackedInline):
+    model = PostImage
+
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    inlines = [PostImageAdmin]
+
+    class Meta:
+        model = Post
+
+
+@admin.register(PostImage)
+class PostImageAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Category)
 admin.site.register(Notebook,NotebookAdmin)
 admin.site.register(Smartphone,SmartphoneAdmin)
@@ -50,3 +66,4 @@ admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
+
