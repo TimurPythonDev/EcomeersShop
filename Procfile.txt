@@ -1,1 +1,1 @@
-web: gunicorn EcomeersShop/EcomeersShop.wsgi --log-file -
+web: gunicorn EcomeersShop.wsgi --log-file -
